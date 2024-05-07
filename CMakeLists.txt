@@ -118,7 +118,7 @@ add_library("libER" SHARED $<TARGET_OBJECTS:objlibER> $<TARGET_OBJECTS:mimalloc-
 target_include_directories("libER" PUBLIC "include")
 # Target libER_static[d].lib
 add_library("libER_static" STATIC $<TARGET_OBJECTS:objlibER> $<TARGET_OBJECTS:mimalloc-obj>)
-target_include_directories("libER_static" PUBLIC "include")
+target_include_directories("libER_static" PUBLIC "include" "symbols")
 # Debug build "d" postfix in libERd.*
 set_target_properties("libER" "libER_static" PROPERTIES DEBUG_POSTFIX d)
 # Target libER_updater
