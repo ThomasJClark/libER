@@ -15,6 +15,11 @@
 
 #include <filesystem>
 
+// HACK: Don't need runtime classes, and they seem to crash with the Japanese
+// exe
+#undef FD4_RUNTIME_CLASS
+#define FD4_RUNTIME_CLASS LIBER_CLASS
+
 // TODO: anchor vtables
 
 namespace from {
