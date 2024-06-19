@@ -50,6 +50,13 @@ uversion liber::get_version() noexcept {
         long long version_result =
             (static_cast<long long>(fixed_file_info->dwFileVersionLS) << 32)
             | fixed_file_info->dwFileVersionMS;
+
+        // HACK: Ignore the final digit of the version (e.g. "2.0.1.1"
+        // => "2.0.1.0"). The final digit distinguishes the Japanese vs.
+        // international versions, but most libER symbosl seem to be valid for
+        // both.
+        version_result &= 0xffffffffffff0000;
+
         return version_result ? version_result : LIBER_INVALID_VERSION;
     }();
     cached_ver = version;
